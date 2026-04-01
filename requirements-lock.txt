@@ -1,0 +1,6 @@
+# 固定版本的依賴文件
+# 生成方式: pip freeze > requirements-lock.txt
+
+PyMuPDF==1.23.8
+opencc-python-reimplemented==0.1.7
+click==8.1.7
