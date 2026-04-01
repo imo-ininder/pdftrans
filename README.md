@@ -1,33 +1,33 @@
-# PDF 简繁体转换工具
+# PDF 簡繁體轉換工具
 
-一个功能强大的 PDF 简繁体转换工具，支持精确的字体控制和排版保持。
+一個功能強大的 PDF 簡繁體轉換工具，支援精確的字體控制和排版保持。
 
 ## 特性
 
-- ✅ 简体中文 ⇄ 繁体中文双向转换
+- ✅ 簡體中文 ⇄ 繁體中文雙向轉換
 - ✅ 保持原始排版和格式
-- ✅ 支持混合中英文内容
-- ✅ 可选系统细体字型
-- ✅ 跨平台支持（macOS, Linux, Windows）
-- ✅ 自定义字体路径
+- ✅ 支援混合中英文內容
+- ✅ 可選系統細體字型
+- ✅ 跨平台支援（macOS, Linux, Windows）
+- ✅ 自訂字體路徑
 
-## 安装
+## 安裝
 
-### 从 PyPI 安装（推荐）
+### 從 PyPI 安裝（推薦）
 
 ```bash
 pip install pdftrans
 ```
 
-### 从源码安装
+### 從原始碼安裝
 
 ```bash
-git clone https://github.com/yourusername/pdftrans.git
+git clone https://github.com/imo-ininder/pdftrans.git
 cd pdftrans
 pip install -e .
 ```
 
-### 依赖
+### 依賴
 
 - Python 3.7+
 - PyMuPDF >= 1.23.0
@@ -36,141 +36,141 @@ pip install -e .
 
 ## 使用方法
 
-安装后，你可以通过两种方式使用：
+安裝後，你可以透過兩種方式使用：
 
-### 方式 1: 命令行工具（推荐）
+### 方式 1: 命令列工具（推薦）
 
-安装后会注册 `pdftrans` 命令：
+安裝後會註冊 `pdftrans` 命令：
 
 ```bash
-# 简体转繁体（使用内建字体）
+# 簡體轉繁體（使用內建字體）
 pdftrans input.pdf output.pdf
 
-# 使用系统细体字型
+# 使用系統細體字型
 pdftrans input.pdf output.pdf --light
 
-# 繁体转简体
+# 繁體轉簡體
 pdftrans input.pdf output.pdf --mode t2s
 
-# 强制覆盖 + 详细日志
+# 強制覆蓋 + 詳細日誌
 pdftrans input.pdf output.pdf -f -v
 
-# 查看帮助
+# 檢視說明
 pdftrans --help
 ```
 
-### 方式 2: Python 脚本
+### 方式 2: Python 腳本
 
 ```bash
-# 简体转繁体（使用内建字体）
+# 簡體轉繁體（使用內建字體）
 python pdf_translator.py input.pdf output.pdf
 
-# 使用系统细体字型
+# 使用系統細體字型
 python pdf_translator.py input.pdf output.pdf --light
 
-# 繁体转简体
+# 繁體轉簡體
 python pdf_translator.py input.pdf output.pdf --mode t2s
 ```
 
-## 命令行选项
+## 命令列選項
 
 ```
-选项:
-  -l, --light              使用系统细体字型 (文件会增大约 25MB)
-  --mode [s2t|t2s]        转换模式: s2t (简转繁), t2s (繁转简)
-  -f, --force             强制覆盖输出文件
-  -v, --verbose           显示详细日志
-  --version               显示版本信息
-  --help                  显示帮助信息
+選項:
+  -l, --light              使用系統細體字型 (檔案會增大約 25MB)
+  --mode [s2t|t2s]        轉換模式: s2t (簡轉繁), t2s (繁轉簡)
+  -f, --force             強制覆蓋輸出檔案
+  -v, --verbose           顯示詳細日誌
+  --version               顯示版本資訊
+  --help                  顯示說明資訊
 ```
 
-## 字体说明
+## 字體說明
 
-### 内建字体模式（默认）
+### 內建字體模式（預設）
 
 - **中文**: Droid Sans Fallback
 - **英文**: Helvetica
-- **文件大小**: 约 +4MB
-- **优点**: 文件小，兼容性好
-- **缺点**: 字体较粗
+- **檔案大小**: 約 +4MB
+- **優點**: 檔案小，相容性好
+- **缺點**: 字體較粗
 
-### 细体字型模式（--light）
+### 細體字型模式（--light）
 
-| 平台 | 中文字体 | 英文字体 | 备用字体 |
+| 平台 | 中文字體 | 英文字體 | 備用字體 |
 |------|---------|---------|---------|
 | macOS | STHeiti Light | Helvetica Neue | PingFang |
 | Linux | Noto Sans CJK Light | Liberation Sans | DejaVu Sans |
 | Windows | Microsoft YaHei Light | Arial | Calibri |
 
-- **文件大小**: 约 +30MB
-- **优点**: 字体更细更美观
-- **缺点**: 文件较大
+- **檔案大小**: 約 +30MB
+- **優點**: 字體更細更美觀
+- **缺點**: 檔案較大
 
-## 自定义字体
+## 自訂字體
 
-通过环境变量指定自定义字体路径：
+透過環境變數指定自訂字體路徑：
 
 ```bash
-# 设置自定义中文字体
+# 設定自訂中文字體
 export PDF_TRANSLATOR_CHINESE_LIGHT_FONT="/path/to/your/font.ttf"
 
-# 设置自定义拉丁字体
+# 設定自訂拉丁字體
 export PDF_TRANSLATOR_LATIN_LIGHT_FONT="/path/to/your/font.ttf"
 
-# 使用自定义字体转换
+# 使用自訂字體轉換
 pdftrans input.pdf output.pdf --light
 ```
 
 ## 已知限制
 
-1. **不支持扫描版 PDF**: 仅支持文本型 PDF
-2. **字体嵌入**: 使用系统字体会显著增加文件大小
-3. **处理时间**: 大型 PDF 处理时间较长
-4. **复杂排版**: 某些复杂排版可能需要手动调整
+1. **不支援掃描版 PDF**: 僅支援文字型 PDF
+2. **字體嵌入**: 使用系統字體會顯著增加檔案大小
+3. **處理時間**: 大型 PDF 處理時間較長
+4. **複雜排版**: 某些複雜排版可能需要手動調整
 
-## 常见问题
+## 常見問題
 
-### Q: 转换后文件变大了？
-A: 使用 `--light` 选项会嵌入完整的系统字体（约 25MB）。如果希望保持文件小，不要使用 `--light` 选项。
+### Q: 轉換後檔案變大了？
+A: 使用 `--light` 選項會嵌入完整的系統字體（約 25MB）。如果希望保持檔案小，不要使用 `--light` 選項。
 
 ### Q: 找不到 pdftrans 命令？
-A: 确保安装时使用了 `pip install -e .` 或 `pip install pdftrans`，并且 Python 的 scripts 目录在 PATH 中。
+A: 確保安裝時使用了 `pip install -e .` 或 `pip install pdftrans`，並且 Python 的 scripts 目錄在 PATH 中。
 
-### Q: Windows 上找不到字体？
-A: 工具会自动尝试多个备用字体。如果都找不到，会自动降级到内建字体。
+### Q: Windows 上找不到字體？
+A: 工具會自動嘗試多個備用字體。如果都找不到，會自動降級到內建字體。
 
-## 开发
+## 開發
 
 ```bash
-# 克隆仓库
-git clone https://github.com/yourusername/pdftrans.git
+# 複製儲存庫
+git clone https://github.com/imo-ininder/pdftrans.git
 cd pdftrans
 
-# 安装开发依赖
+# 安裝開發依賴
 pip install -e ".[dev]"
 
-# 运行测试
+# 執行測試
 pytest
 
-# 代码格式化
+# 程式碼格式化
 black .
 ```
 
-## 许可证
+## 授權條款
 
 MIT License
 
 ## 作者
 
-Your Name
+Tony Liu (tony840622@gmail.com)
 
-## 更新日志
+## 更新日誌
 
-### v1.0.0 (2024-04-01)
-- ✅ 支持简繁双向转换
-- ✅ 支持内建字体和系统细体字型
-- ✅ 跨平台支持（macOS, Linux, Windows）
-- ✅ 自定义字体路径
-- ✅ 命令行工具
-- ✅ 完整的类型注解
-- ✅ 日志系统
+### v1.0.0 (2026-04-01)
+- ✅ 支援簡繁雙向轉換
+- ✅ 支援內建字體和系統細體字型
+- ✅ 跨平台支援（macOS, Linux, Windows）
+- ✅ 自訂字體路徑
+- ✅ 命令列工具
+- ✅ 完整的類型註解
+- ✅ 日誌系統

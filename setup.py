@@ -1,10 +1,18 @@
 from setuptools import setup, find_packages
+from pathlib import Path
+
+# 读取长描述
+long_description = Path("README.md").read_text(encoding="utf-8")
 
 setup(
     name='pdftrans',
     version='1.0.0',
-    description='PDF 简繁体转换工具 - 保留原始布局',
+    description='PDF 簡繁體轉換工具 - 保留原始佈局',
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     author='Tony Liu',
+    author_email='tony840622@gmail.com',
+    url='https://github.com/imo-ininder/pdftrans',
     py_modules=['pdf_translator', 'cli'],
     install_requires=[
         'PyMuPDF>=1.23.0',
@@ -13,7 +21,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'pdftrans=cli:convert',
+            'pdftrans=cli:main',
         ],
     },
     python_requires='>=3.7',
